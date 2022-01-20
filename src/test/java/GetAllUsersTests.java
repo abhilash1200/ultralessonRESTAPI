@@ -3,8 +3,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
 
-import static io.restassured.RestAssured.given;
-
 public class GetAllUsersTests {
     // 1. Arrange
     private UsersClient usersClient;
@@ -17,10 +15,8 @@ public class GetAllUsersTests {
     public void shouldGetAllUsers(){
 
         // 2. Act
-
         usersClient.getAllUsers()
                 .then()
-
 
                 // 3. Assert
                 .statusCode(200)

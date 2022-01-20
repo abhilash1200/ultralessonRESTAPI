@@ -1,9 +1,7 @@
 package users;
-
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import users.create.CreateUserRequestBody;
-
 import static io.restassured.RestAssured.given;
 
 public class UsersClient {
@@ -18,9 +16,10 @@ public class UsersClient {
                         .post("https://gorest.co.in/public/v1/users");
     }
     public Response getAllUsers() {
-        return given()
-                .when()
-                .get("https://gorest.co.in/public/v1/users");
+        return
+                given()
+                        .when()
+                        .get("https://gorest.co.in/public/v1/users");
     }
 
 }

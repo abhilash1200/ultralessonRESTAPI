@@ -14,11 +14,9 @@ public class CreateUserNegativeTests {
     }
     @Test
     public void shouldNotAllowToCreateAUserWithInvalidEmailID(){
-        String name = "Ramya Krishna";
-        String gender = "female";
-        String status = "active";
-        String email = "ramyakrishnaemail.com";
-        CreateUserRequestBody requestBody = new CreateUserRequestBody(name, gender, email, status);
+        CreateUserRequestBody requestBody = CreateUserRequestBody.builder()
+                .name("Ramya Krishna").gender("female")
+                .email("ramyakrishnaemail.com").status("active").build();
 
         // 2. Act
         usersClient.createUser(requestBody)
@@ -29,7 +27,6 @@ public class CreateUserNegativeTests {
                 .statusCode(422)
                 .body("data", Matchers.hasItem(Matchers.hasEntry("field", "email")))
                 .body("data", Matchers.hasItem(Matchers.hasEntry("message", "is invalid")));
-
     }
 
 }

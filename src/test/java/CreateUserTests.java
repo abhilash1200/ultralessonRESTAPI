@@ -3,7 +3,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import users.UsersClient;
 import users.create.CreateUserRequestBody;
-
 import java.util.UUID;
 
 
@@ -17,11 +16,10 @@ public class CreateUserTests {
     }
     @Test
     public void shouldCreateMaleUser (){
-        String email = UUID.randomUUID() + "@email.com";
-        String name = "enali Ramakrishna";
-        String gender = "male";
-        String status = "active";
-        CreateUserRequestBody requestBody = new CreateUserRequestBody(name, gender, email, status);
+        String email = String.format("%s@email.com", UUID.randomUUID());
+        CreateUserRequestBody requestBody = CreateUserRequestBody.builder()
+                .name("enali Ramakrishna").gender("male")
+                .email(email).status("active").build();
 
         // 2. Act
         usersClient.createUser(requestBody)
@@ -37,11 +35,11 @@ public class CreateUserTests {
     public void shouldCreateFemaleUser (){
 
         // 1. Arrange
-        String email = UUID.randomUUID() + "@email.com";
-        String name = "Ramya Krishna";
-        String gender = "female";
-        String status = "active";
-        CreateUserRequestBody requestBody = new CreateUserRequestBody(name, gender, email, status);
+        String email = String.format("%s@email.com", UUID.randomUUID());
+        CreateUserRequestBody requestBody = CreateUserRequestBody.builder()
+                .name("Ramya Krishna").gender("female")
+                .email(email).status("active").build();
+
 
         // 2. Act
         usersClient.createUser(requestBody)
